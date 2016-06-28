@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "/Users/evanwild/AndroidStudioProjects/MySimpleTweets/app/build/intermediates/res/merged/debug/menu/login.xml",
+        "source": "/Users/evanwild/AndroidStudioProjects/MySimpleTweets/app/src/main/res/menu/login.xml"
+    },
+    {
+        "merged": "/Users/evanwild/AndroidStudioProjects/MySimpleTweets/app/build/intermediates/res/merged/debug/menu/menu_timeline.xml",
+        "source": "/Users/evanwild/AndroidStudioProjects/MySimpleTweets/app/src/main/res/menu/menu_timeline.xml"
+    }
+]
