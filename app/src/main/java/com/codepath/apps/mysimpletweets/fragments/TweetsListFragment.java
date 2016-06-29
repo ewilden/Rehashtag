@@ -64,4 +64,8 @@ public class TweetsListFragment extends Fragment {
         aTweets.addAll(tweets);
     }
 
+    public void add(Tweet tweet) {
+        aTweets.insertFront(tweet);
+    }
+
 }

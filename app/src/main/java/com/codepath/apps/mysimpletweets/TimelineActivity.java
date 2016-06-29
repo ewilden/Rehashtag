@@ -34,6 +34,7 @@ import butterknife.ButterKnife;
 import cz.msebera.android.httpclient.Header;
 
 public class TimelineActivity extends AppCompatActivity {
+    private TweetsListFragment lastTweetsListFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,7 +61,6 @@ public class TimelineActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -68,6 +68,21 @@ public class TimelineActivity extends AppCompatActivity {
         // Launch the profile view
         Intent i = new Intent(this, ProfileActivity.class);
         startActivity(i);
+    }
+
+    private final int REQUEST_CODE = 23;
+
+    public void onCompose(MenuItem item) {
+        Intent i = new Intent(this, ComposeActivity.class);
+        startActivityForResult(i, REQUEST_CODE);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQUEST_CODE && resultCode == RESULT_OK) {
+            Tweet tweet = data.getParcelableExtra("tweet");
+            lastTweetsListFragment.add(tweet);
+        }
     }
 
     // Return the order of the fragments in the view pager
@@ -80,10 +95,13 @@ public class TimelineActivity extends AppCompatActivity {
 
         @Override
         public Fragment getItem(int position) {
-            if (position == 0)
-                return new HomeTimelineFragment();
-            else if (position == 1)
+            if (position == 0) {
+                lastTweetsListFragment = new HomeTimelineFragment();
+                return lastTweetsListFragment;
+            }
+            else if (position == 1) {
                 return new MentionsTimelineFragment();
+            }
             else
                 return null;
         }

@@ -8,5 +8,8 @@
     <string name="title_activity_timeline">TimelineActivity</string>
     <string name="profile">Profile</string>
     <string name="title_activity_profile">Profile</string>
+    <string name="what_s_happening">What\'s happening?</string>
+    <string name="tweet">Tweet</string>
+    <string name="compose_a_tweet">Compose a Tweet</string>
 
 </resources>

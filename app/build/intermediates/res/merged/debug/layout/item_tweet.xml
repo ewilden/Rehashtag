@@ -27,7 +27,16 @@
         android:layout_height="wrap_content"
         android:text="I was #1 on Twitter--and heading over to the detriment of America!"
         android:id="@+id/tvBody"
-        android:layout_alignBottom="@id/ivProfileImage"
+        android:layout_below="@+id/tvUserName"
         android:layout_toRightOf="@+id/ivProfileImage"
         android:layout_toEndOf="@+id/ivProfileImage" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="8m"
+        android:id="@+id/tvTimestamp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 </RelativeLayout>

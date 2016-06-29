@@ -1,7 +1,7 @@
 // Generated code from Butter Knife. Do not modify!
-package com.codepath.apps.mysimpletweets.fragments;
+package com.codepath.apps.mysimpletweets;
 
-import android.support.v7.widget.RecyclerView;
+import android.widget.EditText;
 import butterknife.Unbinder;
 import butterknife.internal.Finder;
 import butterknife.internal.ViewBinder;
@@ -9,19 +9,19 @@ import java.lang.IllegalStateException;
 import java.lang.Object;
 import java.lang.Override;
 
-public class TweetsListFragment$$ViewBinder<T extends TweetsListFragment> implements ViewBinder<T> {
+public class ComposeActivity$$ViewBinder<T extends ComposeActivity> implements ViewBinder<T> {
   @Override
   public Unbinder bind(Finder finder, T target, Object source) {
     return new InnerUnbinder<>(target, finder, source);
   }
 
-  protected static class InnerUnbinder<T extends TweetsListFragment> implements Unbinder {
+  protected static class InnerUnbinder<T extends ComposeActivity> implements Unbinder {
     protected T target;
 
     protected InnerUnbinder(T target, Finder finder, Object source) {
       this.target = target;
 
-      target.rvTweets = finder.findRequiredViewAsType(source, 2131427457, "field 'rvTweets'", RecyclerView.class);
+      target.etCompose = finder.findRequiredViewAsType(source, 2131427434, "field 'etCompose'", EditText.class);
     }
 
     @Override
@@ -29,7 +29,7 @@ public class TweetsListFragment$$ViewBinder<T extends TweetsListFragment> implem
       T target = this.target;
       if (target == null) throw new IllegalStateException("Bindings already cleared.");
 
-      target.rvTweets = null;
+      target.etCompose = null;
 
       this.target = null;
     }

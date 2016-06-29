@@ -54,6 +54,7 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
         // Populate data into subviews
         holder.tvUserName.setText(t.getUser().getName());
         holder.tvBody.setText(t.getBody());
+        holder.tvTimestamp.setText(Tweet.getRelativeTimeAgo(t.getCreatedAt()));
 
         // clear old image data
         holder.ivProfileImage.setImageResource(0);
@@ -70,6 +71,7 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
         @BindView(R.id.ivProfileImage) ImageView ivProfileImage;
         @BindView(R.id.tvUserName) TextView tvUserName;
         @BindView(R.id.tvBody) TextView tvBody;
+        @BindView(R.id.tvTimestamp) TextView tvTimestamp;
 
         public ViewHolder(View view) {
             super(view);
@@ -82,5 +84,10 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
         mTweets.addAll(list);
         int curSize = this.getItemCount();
         this.notifyItemRangeInserted(curSize, list.size());
+    }
+
+    public void insertFront(Tweet t) {
+        mTweets.add(0, t);
+        this.notifyDataSetChanged();
     }
 }

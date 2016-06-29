@@ -282,12 +282,15 @@
     <string name="appbar_scrolling_view_behavior" translatable="false">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="bottom_sheet_behavior" translatable="false">android.support.design.widget.BottomSheetBehavior</string>
     <string name="character_counter_pattern" translatable="false">%1$d / %2$d</string>
+    <string name="compose_a_tweet">Compose a Tweet</string>
     <string name="login_label">Connect to Twitter</string>
     <string name="profile">Profile</string>
     <string name="status_bar_notification_info_overflow">999+</string>
     <string name="title_activity_photos">Home Timeline</string>
     <string name="title_activity_profile">Profile</string>
     <string name="title_activity_timeline">TimelineActivity</string>
+    <string name="tweet">Tweet</string>
+    <string name="what_s_happening">What\'s happening?</string>
     <style name="AlertDialog.AppCompat" parent="Base.AlertDialog.AppCompat"/>
     <style name="AlertDialog.AppCompat.Light" parent="Base.AlertDialog.AppCompat.Light"/>
     <style name="Animation.AppCompat.Dialog" parent="Base.Animation.AppCompat.Dialog"/>

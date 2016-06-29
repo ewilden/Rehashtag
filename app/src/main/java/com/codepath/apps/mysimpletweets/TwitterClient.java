@@ -6,11 +6,16 @@ import org.scribe.builder.api.TwitterApi;
 import org.scribe.model.Request;
 
 import android.content.Context;
+import android.text.format.DateUtils;
 
 import com.codepath.oauth.OAuthBaseClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Locale;
 
 /*
  * 
@@ -87,6 +92,13 @@ public class TwitterClient extends OAuthBaseClient {
 		getClient().get(apiUrl, null, handler);
 	}
 
+	public void postTweet(String status, AsyncHttpResponseHandler handler) {
+		String apiUrl = getApiUrl("statuses/update.json");
+		RequestParams params = new RequestParams();
+		params.put("status", status);
+		getClient().post(apiUrl, params, handler);
+	}
+
 	/* 1. Define the endpoint URL with getApiUrl and pass a relative path to the endpoint
 	 * 	  i.e getApiUrl("statuses/home_timeline.json");
 	 * 2. Define the parameters to pass to the request (query or body)
@@ -95,4 +107,5 @@ public class TwitterClient extends OAuthBaseClient {
 	 *    i.e client.get(apiUrl, params, handler);
 	 *    i.e client.post(apiUrl, params, handler);
 	 */
+
 }
