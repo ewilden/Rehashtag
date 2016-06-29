@@ -3,6 +3,7 @@ package com.codepath.apps.mysimpletweets.fragments;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -25,10 +26,11 @@ import butterknife.Unbinder;
 /**
  * Created by evanwild on 6/27/16.
  */
-public class TweetsListFragment extends Fragment {
+public abstract class TweetsListFragment extends Fragment {
     private ArrayList<Tweet> tweets;
     private TweetsAdapter aTweets;
     @BindView(R.id.rvTweets) RecyclerView rvTweets;
+    @BindView(R.id.swipeContainer) SwipeRefreshLayout swipeContainer;
     private Unbinder unbinder;
 
 
@@ -41,8 +43,16 @@ public class TweetsListFragment extends Fragment {
         unbinder = ButterKnife.bind(this, v);
         rvTweets.setAdapter(aTweets);
         rvTweets.setLayoutManager(new LinearLayoutManager(getActivity()));
+        swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                onRefresh();
+            }
+        });
         return v;
     }
+
+    public abstract void onRefresh();
 
     // creation lifecycle
     @Override
@@ -62,6 +72,10 @@ public class TweetsListFragment extends Fragment {
 
     public void addAll(List<Tweet> tweets) {
         aTweets.addAll(tweets);
+    }
+
+    public void clear() {
+        aTweets.clear();
     }
 
     public void add(Tweet tweet) {

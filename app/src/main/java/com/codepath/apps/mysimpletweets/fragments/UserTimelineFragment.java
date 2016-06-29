@@ -19,6 +19,7 @@ import cz.msebera.android.httpclient.Header;
  */
 public class UserTimelineFragment extends TweetsListFragment {
     private TwitterClient client;
+    private String screenName;
 
     public static UserTimelineFragment newInstance(String screenName) {
 
@@ -28,13 +29,20 @@ public class UserTimelineFragment extends TweetsListFragment {
         fragment.setArguments(args);
         return fragment;
     }
-    
+
+    @Override
+    public void onRefresh() {
+        clear();
+        populateTimeline(screenName);
+    }
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // Get the client
         client = TwitterApplication.getRestClient(); // singleton client
-        populateTimeline(getArguments().getString("screen_name"));
+        screenName = getArguments().getString("screen_name");
+        populateTimeline(screenName);
     }
 
     // Send an API request to get the timeline JSON

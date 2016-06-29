@@ -102,6 +102,11 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
         this.notifyItemRangeInserted(curSize, list.size());
     }
 
+    public void clear() {
+        mTweets.clear();
+        notifyDataSetChanged();
+    }
+
     public void insertFront(Tweet t) {
         mTweets.add(0, t);
         this.notifyDataSetChanged();

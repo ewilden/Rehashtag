@@ -21,6 +21,12 @@ public class MentionsTimelineFragment extends TweetsListFragment {
     private TwitterClient client;
 
     @Override
+    public void onRefresh() {
+        clear();
+        populateTimeline();
+    }
+
+    @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // Get the client

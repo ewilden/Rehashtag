@@ -1,6 +1,7 @@
 // Generated code from Butter Knife. Do not modify!
 package com.codepath.apps.mysimpletweets.fragments;
 
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
 import butterknife.Unbinder;
 import butterknife.internal.Finder;
@@ -21,7 +22,8 @@ public class TweetsListFragment$$ViewBinder<T extends TweetsListFragment> implem
     protected InnerUnbinder(T target, Finder finder, Object source) {
       this.target = target;
 
-      target.rvTweets = finder.findRequiredViewAsType(source, 2131427457, "field 'rvTweets'", RecyclerView.class);
+      target.rvTweets = finder.findRequiredViewAsType(source, 2131427458, "field 'rvTweets'", RecyclerView.class);
+      target.swipeContainer = finder.findRequiredViewAsType(source, 2131427457, "field 'swipeContainer'", SwipeRefreshLayout.class);
     }
 
     @Override
@@ -30,6 +32,7 @@ public class TweetsListFragment$$ViewBinder<T extends TweetsListFragment> implem
       if (target == null) throw new IllegalStateException("Bindings already cleared.");
 
       target.rvTweets = null;
+      target.swipeContainer = null;
 
       this.target = null;
     }
