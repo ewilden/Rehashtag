@@ -46,6 +46,8 @@ public class HomeTimelineFragment extends TweetsListFragment {
                 // create models
                 // load model data into listview (gonna need an adapter)
                 addAll(Tweet.fromJSONArray(json));
+
+                swipeContainer.setRefreshing(false);
             }
 
             @Override
