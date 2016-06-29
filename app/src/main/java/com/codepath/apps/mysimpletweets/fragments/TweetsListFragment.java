@@ -66,6 +66,7 @@ public class TweetsListFragment extends Fragment {
 
     public void add(Tweet tweet) {
         aTweets.insertFront(tweet);
+        rvTweets.scrollToPosition(0); // TODO this should be equivalent to setSelection in listview
     }
 
 }
