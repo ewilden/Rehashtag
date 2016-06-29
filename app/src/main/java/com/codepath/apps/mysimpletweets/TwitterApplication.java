@@ -1,6 +1,7 @@
 package com.codepath.apps.mysimpletweets;
 
 import android.content.Context;
+import android.view.View;
 
 import com.codepath.apps.mysimpletweets.time.Hour;
 import com.codepath.apps.mysimpletweets.time.Minute;
@@ -40,6 +41,10 @@ public class TwitterApplication extends com.activeandroid.app.Application {
 
 	public static TwitterClient getRestClient() {
 		return (TwitterClient) TwitterClient.getInstance(TwitterClient.class, TwitterApplication.context);
+	}
+
+	public interface ImageClickListener {
+		public void onImageClick(View view, int position);
 	}
 
 	public static PrettyTime getPrettyTime() {

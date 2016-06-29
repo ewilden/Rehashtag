@@ -32,19 +32,34 @@ public class ProfileActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        // get user info
-        client.getUserInfo(new JsonHttpResponseHandler() {
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                user = User.fromJSON(response);
-                getSupportActionBar().setTitle("@"+user.getScreenName());
-                // populate the header
-                populateProfileHeader(user);
-            }
-        });
 
         // get the screen name
         String screenName = getIntent().getStringExtra("screen_name");
+
+        // get user info
+        if (screenName == null) {
+            client.getUserInfo(new JsonHttpResponseHandler() {
+                @Override
+                public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                    user = User.fromJSON(response);
+                    getSupportActionBar().setTitle("@" + user.getScreenName());
+                    // populate the header
+                    populateProfileHeader(user);
+                }
+            });
+        } else {
+            client.getUserInfo(screenName, new JsonHttpResponseHandler() {
+                @Override
+                public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                    user = User.fromJSON(response);
+                    getSupportActionBar().setTitle("@" + user.getScreenName());
+                    // populate the header
+                    populateProfileHeader(user);
+                }
+            });
+        }
+
+
 
         if (savedInstanceState == null) {
             // create UserTimelineFragment

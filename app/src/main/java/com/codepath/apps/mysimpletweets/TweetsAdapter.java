@@ -1,6 +1,7 @@
 package com.codepath.apps.mysimpletweets;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,7 +21,7 @@ import butterknife.ButterKnife;
 /**
  * Created by evanwild on 6/27/16.
  */
-public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder> {
+public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder> implements TwitterApplication.ImageClickListener {
 
     private List<Tweet> mTweets;
     private Context mContext;
@@ -67,17 +68,32 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
         return mTweets.size();
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    @Override
+    public void onImageClick(View view, int position) {
+        Tweet t = mTweets.get(position);
+        Intent i = new Intent(getContext(), ProfileActivity.class);
+        i.putExtra("screen_name", t.getUser().getScreenName());
+        i.putExtra("user_id", t.getUid());
+        getContext().startActivity(i);
+    }
+
+    public class ViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.ivProfileImage) ImageView ivProfileImage;
         @BindView(R.id.tvUserName) TextView tvUserName;
         @BindView(R.id.tvBody) TextView tvBody;
         @BindView(R.id.tvTimestamp) TextView tvTimestamp;
 
+
         public ViewHolder(View view) {
             super(view);
             ButterKnife.bind(this, view);
+            ivProfileImage.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    TweetsAdapter.this.onImageClick(v, getAdapterPosition());
+                }
+            });
         }
-
     }
 
     public void addAll(List<Tweet> list) {
