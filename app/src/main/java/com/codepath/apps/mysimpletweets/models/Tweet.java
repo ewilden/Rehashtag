@@ -5,6 +5,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.text.format.DateUtils;
 
+import com.codepath.apps.mysimpletweets.TwitterApplication;
 import com.codepath.apps.mysimpletweets.time.Hour;
 import com.codepath.apps.mysimpletweets.time.Minute;
 import com.codepath.apps.mysimpletweets.time.Second;
@@ -33,6 +34,9 @@ public class Tweet implements Parcelable {
     private long uid;
     private User user;
     private String createdAt; // timestamp
+
+
+
 
     public String getBody() {
         return body;
@@ -123,15 +127,9 @@ public class Tweet implements Parcelable {
         String relativeDate = "";
         try {
             long dateMillis = sf.parse(rawJsonDate).getTime();
-            // TODO prettytime is disabled for now
+
             if (System.currentTimeMillis() - dateMillis < DateUtils.DAY_IN_MILLIS /* && false */ ) {
-                PrettyTime t = new PrettyTime();
-                ArrayList<TimeUnit> unitList = new ArrayList<>();
-                unitList.add(new Second(Locale.US));
-                unitList.add(new Minute(Locale.US));
-                unitList.add(new Hour(Locale.US));
-                t.setUnits(unitList);
-                t.setUnits();
+                PrettyTime t = TwitterApplication.getPrettyTime();
                 relativeDate = t.format(new Date(dateMillis));
             } else {
                 relativeDate = DateUtils.getRelativeTimeSpanString(dateMillis,
