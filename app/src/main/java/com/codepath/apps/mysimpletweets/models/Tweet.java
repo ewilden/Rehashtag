@@ -5,6 +5,12 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.text.format.DateUtils;
 
+import com.codepath.apps.mysimpletweets.time.Hour;
+import com.codepath.apps.mysimpletweets.time.Minute;
+import com.codepath.apps.mysimpletweets.time.Second;
+import com.ocpsoft.pretty.time.PrettyTime;
+import com.ocpsoft.pretty.time.TimeUnit;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -12,6 +18,7 @@ import org.json.JSONObject;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Locale;
 
 /**
@@ -116,8 +123,21 @@ public class Tweet implements Parcelable {
         String relativeDate = "";
         try {
             long dateMillis = sf.parse(rawJsonDate).getTime();
-            relativeDate = DateUtils.getRelativeTimeSpanString(dateMillis,
-                    System.currentTimeMillis(), DateUtils.SECOND_IN_MILLIS).toString();
+            // TODO prettytime is disabled for now
+            if (System.currentTimeMillis() - dateMillis < DateUtils.DAY_IN_MILLIS /* && false */ ) {
+                PrettyTime t = new PrettyTime();
+                ArrayList<TimeUnit> unitList = new ArrayList<>();
+                unitList.add(new Second(Locale.US));
+                unitList.add(new Minute(Locale.US));
+                unitList.add(new Hour(Locale.US));
+                t.setUnits(unitList);
+                t.setUnits();
+                relativeDate = t.format(new Date(dateMillis));
+            } else {
+                relativeDate = DateUtils.getRelativeTimeSpanString(dateMillis,
+                        System.currentTimeMillis(), DateUtils.SECOND_IN_MILLIS).toString();
+            }
+
         } catch (ParseException e) {
             e.printStackTrace();
         }
