@@ -60,7 +60,6 @@ public class ProfileActivity extends AppCompatActivity {
         }
 
 
-
         if (savedInstanceState == null) {
             // create UserTimelineFragment
             UserTimelineFragment fragmentUserTimeline = UserTimelineFragment.newInstance(screenName);

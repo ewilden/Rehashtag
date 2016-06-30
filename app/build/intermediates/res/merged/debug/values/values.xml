@@ -285,9 +285,11 @@
     <string name="compose_a_tweet">Compose a Tweet</string>
     <string name="login_label">Connect to Twitter</string>
     <string name="profile">Profile</string>
+    <string name="search">Search</string>
     <string name="status_bar_notification_info_overflow">999+</string>
     <string name="title_activity_photos">Home Timeline</string>
     <string name="title_activity_profile">Profile</string>
+    <string name="title_activity_search">SearchActivity</string>
     <string name="title_activity_timeline">TimelineActivity</string>
     <string name="tweet">Tweet</string>
     <string name="what_s_happening">What\'s happening?</string>

@@ -7,8 +7,10 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
@@ -35,6 +37,8 @@ import cz.msebera.android.httpclient.Header;
 
 public class TimelineActivity extends AppCompatActivity {
     private TweetsListFragment lastTweetsListFragment;
+    private MentionsTimelineFragment mtlf;
+    private HomeTimelineFragment htlf;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,7 +85,7 @@ public class TimelineActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REQUEST_CODE && resultCode == RESULT_OK) {
             Tweet tweet = data.getParcelableExtra("tweet");
-            lastTweetsListFragment.add(tweet);
+            htlf.add(tweet);
         }
     }
 
@@ -96,11 +100,14 @@ public class TimelineActivity extends AppCompatActivity {
         @Override
         public Fragment getItem(int position) {
             if (position == 0) {
-                lastTweetsListFragment = new HomeTimelineFragment();
-                return lastTweetsListFragment;
+                htlf = new HomeTimelineFragment();
+                lastTweetsListFragment = htlf;
+                return htlf;
             }
             else if (position == 1) {
-                return new MentionsTimelineFragment();
+                mtlf = new MentionsTimelineFragment();
+                lastTweetsListFragment = htlf;
+                return mtlf;
             }
             else
                 return null;
@@ -121,6 +128,33 @@ public class TimelineActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_timeline, menu);
+
+        // hook up a listener for when a search is performed
+        MenuItem searchItem = menu.findItem(R.id.action_search);
+        final SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                // perform query here
+                tweetSearch(query);
+
+                // workaround to avoid issues with some emulators and keyboard devices firing twice if a keyboard enter is used
+                // see https://code.google.com/p/android/issues/detail?id=24599
+                searchView.clearFocus();
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
+            }
+        });
         return super.onCreateOptionsMenu(menu);
+    }
+
+    public void tweetSearch(String query) {
+        Intent i = new Intent(TimelineActivity.this, SearchActivity.class);
+        i.putExtra("query", query);
+        startActivity(i);
     }
 }

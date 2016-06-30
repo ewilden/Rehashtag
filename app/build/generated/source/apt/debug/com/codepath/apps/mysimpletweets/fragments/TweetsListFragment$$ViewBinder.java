@@ -22,8 +22,8 @@ public class TweetsListFragment$$ViewBinder<T extends TweetsListFragment> implem
     protected InnerUnbinder(T target, Finder finder, Object source) {
       this.target = target;
 
-      target.rvTweets = finder.findRequiredViewAsType(source, 2131427458, "field 'rvTweets'", RecyclerView.class);
-      target.swipeContainer = finder.findRequiredViewAsType(source, 2131427457, "field 'swipeContainer'", SwipeRefreshLayout.class);
+      target.rvTweets = finder.findRequiredViewAsType(source, 2131427459, "field 'rvTweets'", RecyclerView.class);
+      target.swipeContainer = finder.findRequiredViewAsType(source, 2131427458, "field 'swipeContainer'", SwipeRefreshLayout.class);
     }
 
     @Override

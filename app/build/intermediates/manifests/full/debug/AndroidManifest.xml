@@ -58,6 +58,10 @@
         <activity
             android:name="com.codepath.apps.mysimpletweets.ComposeActivity"
             android:windowSoftInputMode="stateAlwaysVisible|adjustResize" />
+        <activity
+            android:name="com.codepath.apps.mysimpletweets.SearchActivity"
+            android:label="@string/title_activity_search"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>
