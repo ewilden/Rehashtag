@@ -74,7 +74,7 @@ public class TwitterClient extends OAuthBaseClient {
 		params.put("count", 25);
 		params.put("since_id", 1);
 		params.put("q", query);
-		params.put("result_type", "mixed");
+		params.put("result_type", "popular");
 		getClient().get(apiUrl, params, handler);
 	}
 

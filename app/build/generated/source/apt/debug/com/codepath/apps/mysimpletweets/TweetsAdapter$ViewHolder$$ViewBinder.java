@@ -23,9 +23,9 @@ public class TweetsAdapter$ViewHolder$$ViewBinder<T extends TweetsAdapter.ViewHo
       this.target = target;
 
       target.ivProfileImage = finder.findRequiredViewAsType(source, 2131427439, "field 'ivProfileImage'", ImageView.class);
-      target.tvUserName = finder.findRequiredViewAsType(source, 2131427460, "field 'tvUserName'", TextView.class);
-      target.tvBody = finder.findRequiredViewAsType(source, 2131427461, "field 'tvBody'", TextView.class);
-      target.tvTimestamp = finder.findRequiredViewAsType(source, 2131427462, "field 'tvTimestamp'", TextView.class);
+      target.tvUserName = finder.findRequiredViewAsType(source, 2131427461, "field 'tvUserName'", TextView.class);
+      target.tvBody = finder.findRequiredViewAsType(source, 2131427462, "field 'tvBody'", TextView.class);
+      target.tvTimestamp = finder.findRequiredViewAsType(source, 2131427463, "field 'tvTimestamp'", TextView.class);
     }
 
     @Override
