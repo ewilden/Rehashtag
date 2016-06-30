@@ -2,6 +2,7 @@ package com.codepath.apps.mysimpletweets;
 
 import android.content.Context;
 import android.view.View;
+import android.widget.TextView;
 
 import com.codepath.apps.mysimpletweets.time.Hour;
 import com.codepath.apps.mysimpletweets.time.Minute;
@@ -9,8 +10,13 @@ import com.codepath.apps.mysimpletweets.time.Second;
 import com.ocpsoft.pretty.time.PrettyTime;
 import com.ocpsoft.pretty.time.TimeUnit;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Locale;
+import java.util.TimeZone;
 
 /*
  * This is the Android application itself and is used to configure various settings
@@ -50,6 +56,7 @@ public class TwitterApplication extends com.activeandroid.app.Application {
 	public static PrettyTime getPrettyTime() {
 		return prettyTime;
 	}
+
 
 
 }

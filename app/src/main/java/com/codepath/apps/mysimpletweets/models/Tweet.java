@@ -9,6 +9,7 @@ import com.codepath.apps.mysimpletweets.TwitterApplication;
 import com.codepath.apps.mysimpletweets.time.Hour;
 import com.codepath.apps.mysimpletweets.time.Minute;
 import com.codepath.apps.mysimpletweets.time.Second;
+import com.codepath.apps.mysimpletweets.time.TimeFormatter;
 import com.ocpsoft.pretty.time.PrettyTime;
 import com.ocpsoft.pretty.time.TimeUnit;
 
@@ -120,6 +121,10 @@ public class Tweet implements Parcelable {
 
     // getRelativeTimeAgo("Mon Apr 01 21:16:23 +0000 2014");
     public static String getRelativeTimeAgo(String rawJsonDate) {
+        return TimeFormatter.getTimeDifference(rawJsonDate);
+    }
+    /*
+    public static String getRelativeTimeAgo(String rawJsonDate) {
         String twitterFormat = "EEE MMM dd HH:mm:ss ZZZZZ yyyy";
         SimpleDateFormat sf = new SimpleDateFormat(twitterFormat, Locale.ENGLISH);
         sf.setLenient(true);
@@ -128,7 +133,7 @@ public class Tweet implements Parcelable {
         try {
             long dateMillis = sf.parse(rawJsonDate).getTime();
 
-            if (System.currentTimeMillis() - dateMillis < DateUtils.DAY_IN_MILLIS /* && false */ ) {
+            if (System.currentTimeMillis() - dateMillis < DateUtils.DAY_IN_MILLIS  ) {
                 PrettyTime t = TwitterApplication.getPrettyTime();
                 relativeDate = t.format(new Date(dateMillis));
             } else {
@@ -141,5 +146,5 @@ public class Tweet implements Parcelable {
         }
 
         return relativeDate;
-    }
+    } */
 }

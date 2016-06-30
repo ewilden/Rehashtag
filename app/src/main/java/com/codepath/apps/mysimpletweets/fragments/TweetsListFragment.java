@@ -33,7 +33,6 @@ public abstract class TweetsListFragment extends Fragment {
     @BindView(R.id.swipeContainer) SwipeRefreshLayout swipeContainer;
     private Unbinder unbinder;
 
-
     // inflation logic
 
     @Nullable
