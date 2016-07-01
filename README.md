@@ -27,7 +27,7 @@ The following **optional** features are implemented:
 * [x] User can **pull down to refresh tweets** in either timeline
 * [x] User can **search for tweets matching a particular query** and see results
 * [ ] User can see embedded image media within the tweet detail view.
-* [x] (sort of) Improve the user interface and theme the app to feel twitter branded with colors and styles
+* [x] Improve the user interface and theme the app to feel twitter branded with colors and styles
 * [ ] When a network request is sent, user sees an [indeterminate progress indicator](http://guides.codepath.com/android/Handling-ProgressBars#progress-within-actionbar)
 * [ ] User can **"reply" to any tweet on their home timeline**
   * [ ] The user that wrote the original tweet is automatically "@" replied in compose
