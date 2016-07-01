@@ -1,6 +1,7 @@
 package com.codepath.apps.mysimpletweets;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -56,6 +57,7 @@ public class TimelineActivity extends AppCompatActivity {
 
         // Find the sliding tabstrip
         PagerSlidingTabStrip tabStrip = (PagerSlidingTabStrip) findViewById(R.id.tabs);
+        //tabStrip.setIndicatorColor(Color.parseColor("#55acee")); // TODO draw from colors.xml?
 
         // Attach the tabstrip to the viewpager
         tabStrip.setViewPager(vpPager);
@@ -79,6 +81,7 @@ public class TimelineActivity extends AppCompatActivity {
     public void onCompose(MenuItem item) {
         Intent i = new Intent(this, ComposeActivity.class);
         startActivityForResult(i, REQUEST_CODE);
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
     }
 
     @Override

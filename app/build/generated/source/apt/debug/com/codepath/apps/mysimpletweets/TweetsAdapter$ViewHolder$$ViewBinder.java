@@ -22,10 +22,10 @@ public class TweetsAdapter$ViewHolder$$ViewBinder<T extends TweetsAdapter.ViewHo
     protected InnerUnbinder(T target, Finder finder, Object source) {
       this.target = target;
 
-      target.ivProfileImage = finder.findRequiredViewAsType(source, 2131427439, "field 'ivProfileImage'", ImageView.class);
-      target.tvUserName = finder.findRequiredViewAsType(source, 2131427461, "field 'tvUserName'", TextView.class);
-      target.tvBody = finder.findRequiredViewAsType(source, 2131427462, "field 'tvBody'", TextView.class);
-      target.tvTimestamp = finder.findRequiredViewAsType(source, 2131427463, "field 'tvTimestamp'", TextView.class);
+      target.ivProfileImage = finder.findRequiredViewAsType(source, 2131427441, "field 'ivProfileImage'", ImageView.class);
+      target.tvUserName = finder.findRequiredViewAsType(source, 2131427459, "field 'tvUserName'", TextView.class);
+      target.tvBody = finder.findRequiredViewAsType(source, 2131427460, "field 'tvBody'", TextView.class);
+      target.tvTimestamp = finder.findRequiredViewAsType(source, 2131427461, "field 'tvTimestamp'", TextView.class);
     }
 
     @Override

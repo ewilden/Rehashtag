@@ -35,9 +35,16 @@ public class Tweet implements Parcelable {
     private long uid;
     private User user;
     private String createdAt; // timestamp
+    private int retweetCount;
+    private int favouritesCount;
 
+    public int getRetweetCount() {
+        return retweetCount;
+    }
 
-
+    public int getFavouritesCount() {
+        return favouritesCount;
+    }
 
     public String getBody() {
         return body;
@@ -65,6 +72,8 @@ public class Tweet implements Parcelable {
             t.uid = json.getLong("id");
             t.createdAt = json.getString("created_at");
             t.user = User.fromJSON(json.getJSONObject("user"));
+            t.retweetCount = json.getInt("retweet_count");
+            t.favouritesCount = json.getInt("favorite_count");
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -84,40 +93,8 @@ public class Tweet implements Parcelable {
         return arr;
     }
 
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(this.body);
-        dest.writeLong(this.uid);
-        dest.writeParcelable(this.user, flags);
-        dest.writeString(this.createdAt);
-    }
-
     public Tweet() {
     }
-
-    protected Tweet(Parcel in) {
-        this.body = in.readString();
-        this.uid = in.readLong();
-        this.user = in.readParcelable(User.class.getClassLoader());
-        this.createdAt = in.readString();
-    }
-
-    public static final Parcelable.Creator<Tweet> CREATOR = new Parcelable.Creator<Tweet>() {
-        @Override
-        public Tweet createFromParcel(Parcel source) {
-            return new Tweet(source);
-        }
-
-        @Override
-        public Tweet[] newArray(int size) {
-            return new Tweet[size];
-        }
-    };
 
     // getRelativeTimeAgo("Mon Apr 01 21:16:23 +0000 2014");
     public static String getRelativeTimeAgo(String rawJsonDate) {
@@ -147,4 +124,40 @@ public class Tweet implements Parcelable {
 
         return relativeDate;
     } */
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(this.body);
+        dest.writeLong(this.uid);
+        dest.writeParcelable(this.user, flags);
+        dest.writeString(this.createdAt);
+        dest.writeInt(this.retweetCount);
+        dest.writeInt(this.favouritesCount);
+    }
+
+    protected Tweet(Parcel in) {
+        this.body = in.readString();
+        this.uid = in.readLong();
+        this.user = in.readParcelable(User.class.getClassLoader());
+        this.createdAt = in.readString();
+        this.retweetCount = in.readInt();
+        this.favouritesCount = in.readInt();
+    }
+
+    public static final Creator<Tweet> CREATOR = new Creator<Tweet>() {
+        @Override
+        public Tweet createFromParcel(Parcel source) {
+            return new Tweet(source);
+        }
+
+        @Override
+        public Tweet[] newArray(int size) {
+            return new Tweet[size];
+        }
+    };
 }

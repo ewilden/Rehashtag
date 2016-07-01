@@ -17,6 +17,8 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import jp.wasabeef.glide.transformations.CropCircleTransformation;
+import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
 
 /**
  * Created by evanwild on 6/27/16.
@@ -59,8 +61,10 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
 
         // clear old image data
         holder.ivProfileImage.setImageResource(0);
-        Glide.with(getContext()).load(t.getUser().getProfileImageUrl()).into(holder.ivProfileImage);
-
+        //Glide.with(getContext()).load(t.getUser().getProfileImageUrl()).into(holder.ivProfileImage);
+        Glide.with(getContext()).load(t.getUser().getProfileImageUrl())
+                .bitmapTransform(new RoundedCornersTransformation(getContext(), 5, 0))
+                .into(holder.ivProfileImage);
     }
 
     @Override
@@ -77,12 +81,18 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
         getContext().startActivity(i);
     }
 
+    public void onTweetBodyClick(View view, int position) {
+        Tweet t = mTweets.get(position);
+        Intent i = new Intent(getContext(), DetailActivity.class);
+        i.putExtra("tweet", t);
+        getContext().startActivity(i);
+    }
+
     public class ViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.ivProfileImage) ImageView ivProfileImage;
         @BindView(R.id.tvUserName) TextView tvUserName;
         @BindView(R.id.tvBody) TextView tvBody;
         @BindView(R.id.tvTimestamp) TextView tvTimestamp;
-
 
         public ViewHolder(View view) {
             super(view);
@@ -91,6 +101,12 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
                 @Override
                 public void onClick(View v) {
                     TweetsAdapter.this.onImageClick(v, getAdapterPosition());
+                }
+            });
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    TweetsAdapter.this.onTweetBodyClick(v, getAdapterPosition());
                 }
             });
         }

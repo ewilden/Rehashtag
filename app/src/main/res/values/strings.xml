@@ -13,5 +13,6 @@
     <string name="compose_a_tweet">Compose a Tweet</string>
     <string name="search">Search</string>
     <string name="title_activity_search">SearchActivity</string>
+    <string name="title_activity_detail">DetailActivity</string>
 
 </resources>
