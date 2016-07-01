@@ -36,10 +36,6 @@
         "source": "/Users/evanwild/AndroidStudioProjects/MySimpleTweets/app/build/intermediates/exploded-aar/com.android.support/design/23.4.0/res/layout/design_layout_tab_icon.xml"
     },
     {
-        "merged": "/Users/evanwild/AndroidStudioProjects/MySimpleTweets/app/build/intermediates/res/merged/debug/layout/content_detail.xml",
-        "source": "/Users/evanwild/AndroidStudioProjects/MySimpleTweets/app/src/main/res/layout/content_detail.xml"
-    },
-    {
         "merged": "/Users/evanwild/AndroidStudioProjects/MySimpleTweets/app/build/intermediates/res/merged/debug/layout/activity_timeline.xml",
         "source": "/Users/evanwild/AndroidStudioProjects/MySimpleTweets/app/src/main/res/layout/activity_timeline.xml"
     },
@@ -234,10 +230,6 @@
     {
         "merged": "/Users/evanwild/AndroidStudioProjects/MySimpleTweets/app/build/intermediates/res/merged/debug/layout/activity_login.xml",
         "source": "/Users/evanwild/AndroidStudioProjects/MySimpleTweets/app/src/main/res/layout/activity_login.xml"
-    },
-    {
-        "merged": "/Users/evanwild/AndroidStudioProjects/MySimpleTweets/app/build/intermediates/res/merged/debug/layout/content_search.xml",
-        "source": "/Users/evanwild/AndroidStudioProjects/MySimpleTweets/app/src/main/res/layout/content_search.xml"
     },
     {
         "merged": "/Users/evanwild/AndroidStudioProjects/MySimpleTweets/app/build/intermediates/res/merged/debug/layout/abc_action_bar_view_list_nav_layout.xml",

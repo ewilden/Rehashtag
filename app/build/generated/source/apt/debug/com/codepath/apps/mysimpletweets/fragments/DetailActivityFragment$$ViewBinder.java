@@ -22,7 +22,7 @@ public class DetailActivityFragment$$ViewBinder<T extends DetailActivityFragment
     protected InnerUnbinder(T target, Finder finder, Object source) {
       this.target = target;
 
-      target.ivProfileImage = finder.findRequiredViewAsType(source, 2131427441, "field 'ivProfileImage'", ImageView.class);
+      target.ivProfileImage = finder.findRequiredViewAsType(source, 2131427442, "field 'ivProfileImage'", ImageView.class);
       target.tvTimestamp = finder.findRequiredViewAsType(source, 2131427461, "field 'tvTimestamp'", TextView.class);
       target.tvUserName = finder.findRequiredViewAsType(source, 2131427459, "field 'tvUserName'", TextView.class);
       target.tvBody = finder.findRequiredViewAsType(source, 2131427460, "field 'tvBody'", TextView.class);

@@ -21,7 +21,7 @@ public class ComposeActivity$$ViewBinder<T extends ComposeActivity> implements V
     protected InnerUnbinder(T target, Finder finder, Object source) {
       this.target = target;
 
-      target.etCompose = finder.findRequiredViewAsType(source, 2131427434, "field 'etCompose'", EditText.class);
+      target.etCompose = finder.findRequiredViewAsType(source, 2131427435, "field 'etCompose'", EditText.class);
     }
 
     @Override
